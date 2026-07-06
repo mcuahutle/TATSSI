@@ -1,5 +1,4 @@
 {
-    "url": "https://e4ftl01.cr.usgs.gov/",
-    "username": "USERNAME",
-    "password": "PASSWORD"
+    "url": "https://data.lpdaac.earthdatacloud.nasa.gov/",
+    "note": "This is the LP DAAC endpoint for MODIS data"
 }
