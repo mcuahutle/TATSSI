@@ -68,12 +68,6 @@ RUN conda run -n ${TATSSI_ENV} Rscript -e "install.packages('changepoint', \
         stopifnot('changepoint' %in% rownames(installed.packages()))"
 
 # --- Datos Natural Earth (costas/fronteras) precargados para cartopy ---
-# El contenedor corre con HOME=/tmp: sin esto, cartopy descarga los shapefiles
-# en CADA arranque de la GUI (~5 s + red). cartopy >= 0.25 ya NO honra las
-# variables CARTOPY_DATA_DIR / CARTOPY_PRE_EXISTING_DATA_DIR (usa platformdirs
-# sobre $HOME), asi que los datos se hornean directamente en la ruta que
-# resolvera en runtime: /tmp/.local/share/cartopy (el /tmp de la imagen
-# persiste como capa; solo /tmp/.X11-unix se monta encima).
 RUN conda run -n ${TATSSI_ENV} python -c "\
 import cartopy; cartopy.config['data_dir'] = '/tmp/.local/share/cartopy'; \
 import cartopy.io.shapereader as shp; \
